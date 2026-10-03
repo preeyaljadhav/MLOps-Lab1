@@ -36,6 +36,18 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(calculator.fun4(-1, -1, -1), -3)
         self.assertEqual(calculator.fun4(-1, -1, 100), 98)
 
+    #My added test cases for the functions I have added
+    #SQUARE ROOT TEST CASES
+
+    def test_square_root(self):
+        self.assertEqual(calculator.square_root(16), 4)
+        self.assertEqual(calculator.square_root(0), 0)
+        self.assertEqual(calculator.square_root(2.25), 1.5)
+        with self.assertRaises(ValueError):
+            calculator.square_root(-4)
+        with self.assertRaises(ValueError):
+            calculator.square_root("nine")
+
 
 
 if __name__ == '__main__':

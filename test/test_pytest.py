@@ -27,3 +27,16 @@ def test_fun4():
     assert calculator.fun4 (-1, -1, -1) == -3
     
     assert calculator.fun4 (-1, -1, 100) == 98
+
+# My test cases for the functions I have added 
+
+# SQARE ROOT TEST CASES
+
+def test_square_root():
+    assert calculator.square_root(16) == 4
+    assert calculator.square_root(0) == 0
+    assert calculator.square_root(2.25) == 1.5
+    with pytest.raises(ValueError):
+        calculator.square_root(-4)
+    with pytest.raises(ValueError):
+        calculator.square_root("nine")

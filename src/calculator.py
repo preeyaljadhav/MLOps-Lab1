@@ -85,3 +85,49 @@ def square_root(x):
     if x < 0:
         raise ValueError("Cannot take the square root of a negative number.")
     return math.sqrt(x)
+
+# MEMORY BUTTONS
+
+# Memory storage (starts empty, like a calculator's memory when switched on)
+_memory = 0
+
+def memory_add(value):
+    """
+    Adds a number to memory (M+).
+    Args:
+        value (int/float): Number to add to memory.
+    Raises:
+        ValueError: If value is not a number.
+    """
+    global _memory
+    if not isinstance(value, (int, float)):
+        raise ValueError("Input must be a number.")
+    _memory += value
+
+def memory_subtract(value):
+    """
+    Subtracts a number from memory (M-).
+    Args:
+        value (int/float): Number to subtract from memory.
+    Raises:
+        ValueError: If value is not a number.
+    """
+    global _memory
+    if not isinstance(value, (int, float)):
+        raise ValueError("Input must be a number.")
+    _memory -= value
+
+def memory_recall():
+    """
+    Returns the number currently stored in memory (MR).
+    Returns:
+        int/float: The stored value.
+    """
+    return _memory
+
+def memory_clear():
+    """
+    Resets memory to zero (MC).
+    """
+    global _memory
+    _memory = 0

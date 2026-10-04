@@ -40,3 +40,24 @@ def test_square_root():
         calculator.square_root(-4)
     with pytest.raises(ValueError):
         calculator.square_root("nine")
+
+# MEMORY BUTTONS TEST CASES
+
+def test_memory():
+    calculator.memory_clear()
+    assert calculator.memory_recall() == 0
+    calculator.memory_add(10)
+    assert calculator.memory_recall() == 10
+    calculator.memory_add(5)
+    assert calculator.memory_recall() == 15
+    calculator.memory_subtract(3)
+    assert calculator.memory_recall() == 12
+    calculator.memory_clear()
+    assert calculator.memory_recall() == 0
+    calculator.memory_add(calculator.fun1(2, 3))
+    assert calculator.memory_recall() == 5
+    calculator.memory_clear()
+    with pytest.raises(ValueError):
+        calculator.memory_add("ten")
+    with pytest.raises(ValueError):
+        calculator.memory_subtract("ten")

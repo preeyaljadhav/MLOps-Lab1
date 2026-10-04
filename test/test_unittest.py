@@ -48,6 +48,27 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculator.square_root("nine")
 
+    #MEMORY BUTTONS TEST CASES
+
+    def test_memory(self):
+        calculator.memory_clear()
+        self.assertEqual(calculator.memory_recall(), 0)
+        calculator.memory_add(10)
+        self.assertEqual(calculator.memory_recall(), 10)
+        calculator.memory_add(5)
+        self.assertEqual(calculator.memory_recall(), 15)
+        calculator.memory_subtract(3)
+        self.assertEqual(calculator.memory_recall(), 12)
+        calculator.memory_clear()
+        self.assertEqual(calculator.memory_recall(), 0)
+        calculator.memory_add(calculator.fun1(2, 3))
+        self.assertEqual(calculator.memory_recall(), 5)
+        calculator.memory_clear()
+        with self.assertRaises(ValueError):
+            calculator.memory_add("ten")
+        with self.assertRaises(ValueError):
+            calculator.memory_subtract("ten")
+
 
 
 if __name__ == '__main__':

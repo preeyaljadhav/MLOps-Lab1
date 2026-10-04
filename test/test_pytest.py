@@ -61,3 +61,26 @@ def test_memory():
         calculator.memory_add("ten")
     with pytest.raises(ValueError):
         calculator.memory_subtract("ten")
+        
+
+# UNIT CONVERSION TEST CASES
+
+def test_temperature_conversion():
+    assert calculator.celsius_to_fahrenheit(100) == 212
+    assert calculator.celsius_to_fahrenheit(0) == 32
+    assert calculator.celsius_to_fahrenheit(-40) == -40
+    assert calculator.fahrenheit_to_celsius(212) == 100
+    assert calculator.fahrenheit_to_celsius(32) == 0
+    assert calculator.fahrenheit_to_celsius(-40) == -40
+    with pytest.raises(ValueError):
+        calculator.celsius_to_fahrenheit("hot")
+
+def test_distance_conversion():
+    assert calculator.miles_to_km(1) == 1.609344
+    assert calculator.km_to_miles(1.609344) == 1
+    assert calculator.km_to_miles(0) == 0
+    assert calculator.km_to_miles(10) == pytest.approx(6.2137, abs=0.0001)
+    with pytest.raises(ValueError):
+        calculator.km_to_miles(-5)
+    with pytest.raises(ValueError):
+        calculator.miles_to_km("far")

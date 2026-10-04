@@ -131,3 +131,68 @@ def memory_clear():
     """
     global _memory
     _memory = 0
+
+
+# UNIT CONVERSIONS
+
+KM_PER_MILE = 1.609344  # 1 mile is exactly 1.609344 km
+
+def celsius_to_fahrenheit(c):
+    """
+    Converts a temperature from Celsius to Fahrenheit.
+    Args:
+        c (int/float): Temperature in Celsius.
+    Returns:
+        float: Temperature in Fahrenheit.
+    Raises:
+        ValueError: If c is not a number.
+    """
+    if not isinstance(c, (int, float)):
+        raise ValueError("Input must be a number.")
+    return c * 9 / 5 + 32
+
+def fahrenheit_to_celsius(f):
+    """
+    Converts a temperature from Fahrenheit to Celsius.
+    Args:
+        f (int/float): Temperature in Fahrenheit.
+    Returns:
+        float: Temperature in Celsius.
+    Raises:
+        ValueError: If f is not a number.
+    """
+    if not isinstance(f, (int, float)):
+        raise ValueError("Input must be a number.")
+    return (f - 32) * 5 / 9
+
+def km_to_miles(km):
+    """
+    Converts a distance from kilometers to miles.
+    Args:
+        km (int/float): Distance in kilometers.
+    Returns:
+        float: Distance in miles.
+    Raises:
+        ValueError: If km is not a number or is negative.
+    """
+    if not isinstance(km, (int, float)):
+        raise ValueError("Input must be a number.")
+    if km < 0:
+        raise ValueError("Distance cannot be negative.")
+    return km / KM_PER_MILE
+
+def miles_to_km(miles):
+    """
+    Converts a distance from miles to kilometers.
+    Args:
+        miles (int/float): Distance in miles.
+    Returns:
+        float: Distance in kilometers.
+    Raises:
+        ValueError: If miles is not a number or is negative.
+    """
+    if not isinstance(miles, (int, float)):
+        raise ValueError("Input must be a number.")
+    if miles < 0:
+        raise ValueError("Distance cannot be negative.")
+    return miles * KM_PER_MILE

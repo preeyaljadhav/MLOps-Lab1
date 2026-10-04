@@ -69,6 +69,29 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculator.memory_subtract("ten")
 
+    # UNIT CONVERSION TEST CASES
+
+    def test_temperature_conversion(self):
+        self.assertEqual(calculator.celsius_to_fahrenheit(100), 212)
+        self.assertEqual(calculator.celsius_to_fahrenheit(0), 32)
+        self.assertEqual(calculator.celsius_to_fahrenheit(-40), -40)
+        self.assertEqual(calculator.fahrenheit_to_celsius(212), 100)
+        self.assertEqual(calculator.fahrenheit_to_celsius(32), 0)
+        self.assertEqual(calculator.fahrenheit_to_celsius(-40), -40)
+        with self.assertRaises(ValueError):
+            calculator.celsius_to_fahrenheit("hot")
+
+    def test_distance_conversion(self):
+        self.assertEqual(calculator.miles_to_km(1), 1.609344)
+        self.assertEqual(calculator.km_to_miles(1.609344), 1)
+        self.assertEqual(calculator.km_to_miles(0), 0)
+        self.assertAlmostEqual(calculator.km_to_miles(10), 6.2137, places=4)
+        with self.assertRaises(ValueError):
+            calculator.km_to_miles(-5)
+        with self.assertRaises(ValueError):
+            calculator.miles_to_km("far")
+
+
 
 
 if __name__ == '__main__':

@@ -91,6 +91,26 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculator.miles_to_km("far")
 
+    # NUMBER BASE CONVERSION TEST CASES
+
+    def test_base_conversion(self):
+        self.assertEqual(calculator.decimal_to_binary(10), "1010")
+        self.assertEqual(calculator.decimal_to_binary(0), "0")
+        self.assertEqual(calculator.decimal_to_binary(255), "11111111")
+        self.assertEqual(calculator.decimal_to_hex(255), "FF")
+        self.assertEqual(calculator.decimal_to_hex(16), "10")
+        self.assertEqual(calculator.binary_to_decimal("1010"), 10)
+        self.assertEqual(calculator.binary_to_decimal("11111111"), 255)
+        self.assertEqual(calculator.binary_to_decimal(calculator.decimal_to_binary(42)), 42)
+        with self.assertRaises(ValueError):
+            calculator.decimal_to_binary(-5)
+        with self.assertRaises(ValueError):
+            calculator.decimal_to_binary(3.5)
+        with self.assertRaises(ValueError):
+            calculator.decimal_to_hex("ten")
+        with self.assertRaises(ValueError):
+            calculator.binary_to_decimal("102")
+
 
 
 

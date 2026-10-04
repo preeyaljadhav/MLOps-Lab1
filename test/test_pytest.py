@@ -61,7 +61,7 @@ def test_memory():
         calculator.memory_add("ten")
     with pytest.raises(ValueError):
         calculator.memory_subtract("ten")
-        
+
 
 # UNIT CONVERSION TEST CASES
 
@@ -84,3 +84,24 @@ def test_distance_conversion():
         calculator.km_to_miles(-5)
     with pytest.raises(ValueError):
         calculator.miles_to_km("far")
+
+
+# NUMBER BASE CONVERSION TEST CASES
+
+def test_base_conversion():
+    assert calculator.decimal_to_binary(10) == "1010"
+    assert calculator.decimal_to_binary(0) == "0"
+    assert calculator.decimal_to_binary(255) == "11111111"
+    assert calculator.decimal_to_hex(255) == "FF"
+    assert calculator.decimal_to_hex(16) == "10"
+    assert calculator.binary_to_decimal("1010") == 10
+    assert calculator.binary_to_decimal("11111111") == 255
+    assert calculator.binary_to_decimal(calculator.decimal_to_binary(42)) == 42
+    with pytest.raises(ValueError):
+        calculator.decimal_to_binary(-5)
+    with pytest.raises(ValueError):
+        calculator.decimal_to_binary(3.5)
+    with pytest.raises(ValueError):
+        calculator.decimal_to_hex("ten")
+    with pytest.raises(ValueError):
+        calculator.binary_to_decimal("102")

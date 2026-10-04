@@ -196,3 +196,53 @@ def miles_to_km(miles):
     if miles < 0:
         raise ValueError("Distance cannot be negative.")
     return miles * KM_PER_MILE
+
+
+# NUMBER BASE CONVERSIONS(decimal -> binary, decimal -> hex, and binary  decimal)
+
+# Number base conversion
+def decimal_to_binary(n):
+    """
+    Converts a whole number to binary.
+    Args:
+        n (int): A non-negative whole number.
+    Returns:
+        str: Binary form of n, e.g. 10 -> "1010".
+    Raises:
+        ValueError: If n is not a whole number or is negative.
+    """
+    if not isinstance(n, int):
+        raise ValueError("Input must be a whole number.")
+    if n < 0:
+        raise ValueError("Input cannot be negative.")
+    return bin(n)[2:]
+
+def decimal_to_hex(n):
+    """
+    Converts a whole number to hexadecimal.
+    Args:
+        n (int): A non-negative whole number.
+    Returns:
+        str: Hexadecimal form of n, e.g. 255 -> "FF".
+    Raises:
+        ValueError: If n is not a whole number or is negative.
+    """
+    if not isinstance(n, int):
+        raise ValueError("Input must be a whole number.")
+    if n < 0:
+        raise ValueError("Input cannot be negative.")
+    return hex(n)[2:].upper()
+
+def binary_to_decimal(b):
+    """
+    Converts a binary string back to a whole number.
+    Args:
+        b (str): A string of 0s and 1s, e.g. "1010".
+    Returns:
+        int: Decimal value, e.g. "1010" -> 10.
+    Raises:
+        ValueError: If b is not a string made only of 0s and 1s.
+    """
+    if not isinstance(b, str) or b == "" or any(ch not in "01" for ch in b):
+        raise ValueError("Input must be a binary string of 0s and 1s.")
+    return int(b, 2)
